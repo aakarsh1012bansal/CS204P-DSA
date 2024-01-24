@@ -1,5 +1,4 @@
 # include <iostream>
-# include <stack>
 # include <cstring>
 using namespace std;
 
@@ -11,6 +10,37 @@ int pow(int base, int power) {
     return num;
 }
 
+class myStack
+{
+private:
+    /* data */
+    int data[1000];
+    int topEle=-1;
+public:
+    void push(int ele);
+    void pop();
+    int top();
+    // void display();
+};
+
+void myStack::push(int ele) {
+    topEle++;
+    data[topEle] = ele;
+}
+void myStack::pop() {
+    topEle--;
+}
+int myStack::top() {
+    return data[topEle];
+}
+// void myStack::display() {
+//     for(int i=0;i<=topEle;i++) {
+//         cout<<data[i]<<" ";
+//     }
+//     cout<<endl;
+// }
+
+
 int main() {
     int t;
     cin>>t;
@@ -18,7 +48,7 @@ int main() {
     for(int q=0;q<t;q++) {
         string s;
         getline(cin, s);
-        stack<int> eva;
+        myStack eva;
         for(int i=0;i<s.length();i++) {
             if(isdigit(s.at(i))) {
                 int j=i;
@@ -30,7 +60,7 @@ int main() {
                 j=i;
                 int num=0;
                 for(int count=numDigit-1;count>=0;count--) {
-                    num += (s.at(j)-'0')*(int)pow(10, count);
+                    num += (s.at(j)-'0')*pow(10, count);
                     j++;
                 }
                 i=j;
@@ -69,15 +99,7 @@ int main() {
                 int result = nume/denom;
                 eva.push(result);
             }
-            else if(s.at(i)=='^') {
-                int b = eva.top();
-                eva.pop();
-                int a = eva.top();
-                eva.pop();
-                int result = pow(a, b);
-                eva.push(result);
-            }
         }
-        std::cout<<eva.top()<<endl;
+        cout<<eva.top()<<endl;
     }
 }

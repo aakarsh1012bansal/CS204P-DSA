@@ -2,6 +2,8 @@
 # include <stack>
 using namespace std;
 
+// not working properly...will reactify later
+
 class undoRedoFeature
 {
 private:
@@ -49,25 +51,56 @@ public:
         }
         cout<<endl;
     }
-
+    void emptyRedo() {
+        while(!s2.empty()) {
+            s2.pop();
+        }
+    }
 };
 
 
 int main() {
-    string s = "aakarsh";
     undoRedoFeature urf;
-    urf.init(s);
-    urf.display();
-    urf.changeCase(0,2, true);
-    urf.display();
-    urf.changeCase(4,5, true);
-    urf.display();
-    urf.undo();
-    urf.display();
-    urf.undo();
-    urf.display();
-    urf.redo();
-    urf.display();
-    urf.redo();
-    urf.display();
+    string s;
+    int t;
+    cin>>t;
+    for(int q=0;q<t;q++) {
+        int code;
+        cin>>code;
+        switch(code) {
+            case 1:
+                cin>>s;
+                urf.init(s);
+                break;
+            case 2: 
+                int i,j;
+                cin>>i>>j;
+                urf.changeCase(i,j,true);
+                break;
+            case 3:
+                urf.undo();
+                break;
+            case 4:
+                urf.redo();
+                break;
+            case 5:
+                urf.display();
+        }
+    }
+    // string s = "aakarsh";
+    // undoRedoFeature urf;
+    // urf.init(s);
+    // urf.display();
+    // urf.changeCase(0,2, true);
+    // urf.display();
+    // urf.changeCase(4,5, true);
+    // urf.display();
+    // urf.undo();
+    // urf.display();
+    // urf.undo();
+    // urf.display();
+    // urf.redo();
+    // urf.display();
+    // urf.redo();
+    // urf.display();
 }
