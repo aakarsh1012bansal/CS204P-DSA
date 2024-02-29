@@ -16,13 +16,6 @@ int main() {
             }
         }
 
-        for(int i=0;i<r;i++) {
-            for(int j=0;j<c;j++) {
-                cout<<arr[i][j]<<" ";
-            }
-            cout<<endl;
-        }
-
         int r1, c1, r2, c2;
         cin>>r1>>c1>>r2>>c2;
 
